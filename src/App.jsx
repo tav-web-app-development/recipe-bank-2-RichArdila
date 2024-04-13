@@ -7,14 +7,16 @@ import "./assets/style.css";
 
 function App() {
   const [recipes, setRecipes] = useState([]);
+  
   useEffect(() => {
-    fetch("https://api.sampleapis.com/recipes/recipes")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setRecipes(data);
-      });
+    const fetchMainData = async () => {
+      const response = await fetch("https://api.sampleapis.com/recipes/recipes");
+      const data =  await response.json();
+      setRecipes(data);
+      };
+
+      fetchMainData();
+
     return () => console.log("unmounted");
   }, []);
   /*function filterRecipesComputeIntensive(recipes) {
@@ -26,7 +28,8 @@ function App() {
   
   }*/
   
-  const filteredRecipes = useMemo(() => recipes,[recipes]);
+  // const filteredRecipes = useMemo(()=> filterRecipesComputeIntensive(recipes), [recipes]);
+  
   const handleDeleteRecipe = (id) => {
     setRecipes(recipes.filter((recipe) => recipe.id !== id));
   };
