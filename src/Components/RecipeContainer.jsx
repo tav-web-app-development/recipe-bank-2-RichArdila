@@ -44,7 +44,7 @@ function RecipeContainer({ recipe, onDelete }) {
               <button onClick={handleEdit}>Edit</button>
               <button onClick={handleDelete}>Delete</button>
             </>
-          ) };
+          )}
         
           <h2>
             {isEditing ? (
