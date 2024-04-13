@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -17,14 +17,17 @@ function App() {
       });
     return () => console.log("unmounted");
   }, []);
-  function filterRecipesComputeIntensive(recipes) {
+  /*function filterRecipesComputeIntensive(recipes) {
     const now = performance.now();
     while (performance.now() - now < 8000) {
       //spin()
     }
-    return list.filter((word) => word.name.split(" ").length <= 4);
-  }
-  const filteredRecipes = filterRecipesComputeIntensive(recipes);
+  return recipes;
+  
+  }*/
+  
+  const filteredRecipes = useMemo(() => recipes,[recipes]);
+  
   return (
     <>
       <Navbar />
