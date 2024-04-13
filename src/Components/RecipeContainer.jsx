@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 /* eslint-disable react/prop-types */
-function RecipeContainer({ recipe }) {
+function RecipeContainer({ recipe, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(recipe.title);
   const [description, setDescription] = useState(recipe.description);
@@ -14,6 +14,7 @@ function RecipeContainer({ recipe }) {
   };
 
   const handleDelete = () => {
+    onDelete(recipe.id);
     console.log("Delete clicked for recipe", recipe);
   };
 

@@ -27,12 +27,16 @@ function App() {
   }*/
   
   const filteredRecipes = useMemo(() => recipes,[recipes]);
+  const handleDeleteRecipe = (id) => {
+    setRecipes(recipes.filter((recipe) => recipe.id !== id));
+  };
+  
   
   return (
     <>
       <Navbar />
       {recipes.map((data) => (
-        <RecipeContainer recipe={data} key={data.id} />
+        <RecipeContainer recipe={data} key={data.id} onDelete={handleDeleteRecipe}/>
       ))}
       <Footer />
     </>
