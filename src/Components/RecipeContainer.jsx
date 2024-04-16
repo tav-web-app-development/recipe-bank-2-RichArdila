@@ -3,10 +3,15 @@ import { useState } from "react";
 /* eslint-disable react/prop-types */
 function RecipeContainer({ recipe, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [title, setTitle] = useState(recipe.title);
-  const [description, setDescription] = useState(recipe.description);
-  const [ingredients, setIngredients] = useState(recipe.ingredients);
-  const [directions, setDirections] = useState(recipe.directions);
+  const [EditRecipe, setEditRecipe] = useState({ ...recipe})
+  //const [title, setTitle] = useState(recipe.title);
+  //const [description, setDescription] = useState(recipe.description);
+  //const [ingredients, setIngredients] = useState(recipe.ingredients);
+  //const [directions, setDirections] = useState(recipe.directions);
+
+  const handleChange = (field, value) => {
+    setEditRecipe(prevState => ({...prevState, [field]:value}));
+  };
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -19,7 +24,7 @@ function RecipeContainer({ recipe, onDelete }) {
   };
 
   const handleSave = () => {
-    console.log("Save clicked for recipe", {title, description, ingredients, directions});
+    console.log("Save clicked for recipe", {recipe});
     setIsEditing(false);
   };
 
@@ -49,13 +54,13 @@ function RecipeContainer({ recipe, onDelete }) {
           <h2>
             {isEditing ? (
               <textarea
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                value={EditRecipe.title}
+                onChange={(e) => handleChange('title', e.target.value)}
                 rows={1}
                 cols={50}
             />
           ) : (
-            title
+            EditRecipe.title
           )}
             
             </h2>
@@ -63,13 +68,13 @@ function RecipeContainer({ recipe, onDelete }) {
             <strong>Description:</strong>{" "}
             {isEditing ? (
               <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={EditRecipe.description}
+              onChange={(e) => handleChange('description', e.target.value)}
               rows={2}
               cols={100}
               />
             ) : (
-              description
+              EditRecipe.description
             )}
   
           </p>
@@ -77,32 +82,32 @@ function RecipeContainer({ recipe, onDelete }) {
             <strong>Ingredients:</strong>{" "} 
             {isEditing ? (
             <textarea 
-            value={ingredients}
-            onChange={(e) => setIngredients(e.target.value)}
+            value={EditRecipe.ingredients}
+            onChange={(e) => handleChange('ingredients', e.target.value)}
             rows={10}
             cols={100}
              />
             ) : (
-              ingredients
+              EditRecipe.ingredients
             )}
           </p>
           <p>
             <strong>Directions:</strong>{" "} 
             {isEditing ? (
              <textarea 
-             value={directions}
-             onChange={(e) => setDirections(e.target.value)}
+             value={EditRecipe.directions}
+             onChange={(e) => handleChange('directions', e.target.value)}
              rows={15}
              cols={100}
 
              /> 
             ) : (
-              directions
+              EditRecipe.directions
             )}            
           </p>
           <img
             src={recipe.photoUrl}
-            alt={title}
+            alt={EditRecipe.title}
             width={300}
             height={300}
           />

@@ -39,7 +39,10 @@ function App() {
     <>
       <Navbar />
       {recipes.map((data) => (
-        <RecipeContainer recipe={data} key={data.id} onDelete={handleDeleteRecipe}/>
+        <RecipeContainer 
+        recipe={data} 
+        key={data.id} 
+        onDelete={handleDeleteRecipe}/>
       ))}
       <Footer />
     </>
