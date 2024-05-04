@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import newRecipe from "./NewRecipe";
+
 function Navbar() {
   return (
     <>
@@ -16,6 +19,9 @@ function Navbar() {
             </li>
             <li>
               <a href="#">Contact</a>
+            </li>
+            <li>
+              <Link to="/newRecipe">New Recipe</Link>
             </li>
           </ul>
         </nav>
