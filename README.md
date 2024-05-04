@@ -10,3 +10,16 @@
 Extra Credit
 
 1. In App.jsx, the useEffect method uses fetch with then. Change it to use Async/Await
+
+
+2. You will be continuing to work on last weeks assignement recipe-bank-2.
+
+1. run `run `npm install react-router-dom`
+
+3. Add to the NavBar a Submit a recipe link
+
+4. Use React Router to navigate to a new page to enter the new Recipe details. When the form is submitted navigate back to the root page
+
+Have a look at https://github.com/tav-web-app-development/Recipe-bank-2 for details on how to implement the router
+
+https://reactrouter.com/en/main/start/tutorial#setup
